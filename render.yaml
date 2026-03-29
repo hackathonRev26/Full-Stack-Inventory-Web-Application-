@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: hackathon-backend1
+    runtime: python
+    rootDir: hackathon/backend1
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: FLASK_DEBUG
+        value: "0"

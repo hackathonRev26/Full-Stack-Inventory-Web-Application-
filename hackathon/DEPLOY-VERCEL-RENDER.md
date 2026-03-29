@@ -11,7 +11,7 @@ This gives you a stable public full-stack setup:
 ## 2) Deploy backend on Render
 1. Go to Render Dashboard -> New -> Web Service.
 2. Connect your GitHub repo.
-3. Choose Root Directory: `backend1`
+3. Choose Root Directory: `hackathon/backend1`
 4. Runtime: Python 3
 5. Build Command:
    `pip install -r requirements.txt`
@@ -27,7 +27,7 @@ This gives you a stable public full-stack setup:
 ## 3) Deploy ordering frontend on Vercel
 1. Go to Vercel -> Add New Project.
 2. Import same GitHub repo.
-3. Set Root Directory: `frontend`
+3. Set Root Directory: `hackathon/frontend`
 4. Framework Preset: Vite
 5. In Environment Variables add:
    - `VITE_BACKEND_URL` = `https://your-backend.onrender.com`
@@ -36,10 +36,15 @@ This gives you a stable public full-stack setup:
 
 ## 4) Optional: deploy inventory frontend2 on Vercel
 1. Add another Vercel project from same repo.
-2. Root Directory: `frontend2`
+2. Root Directory: `hackathon/frontend2`
 3. Add env var:
    - `VITE_BACKEND_URL` = `https://your-backend.onrender.com`
 4. Deploy.
+
+## Optional: one-click backend via Render Blueprint
+1. In Render click New -> Blueprint.
+2. Select your GitHub repo.
+3. Render will read `render.yaml` from repo root and prefill the backend service.
 
 ## 5) Verify end-to-end
 1. Open ordering app, place an order.
