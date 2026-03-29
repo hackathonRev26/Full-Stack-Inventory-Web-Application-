@@ -90,12 +90,21 @@ const BACKEND_BASE_URL =
 
 const DASHBOARD_POLL_INTERVAL_MS = 3000;
 
-function formatInventoryObject(data) {
-  return Object.entries(data).map(([name, quantity]) => ({
-    name,
-    quantity,
-    max: Math.max(maxValues[name] ?? 0, Number(quantity) || 0, 1),
-  }));
+function formatInventoryObject(data, previousInventory = []) {
+  const previousMaxByName = new Map(
+    (previousInventory || []).map((item) => [String(item.name), Number(item.max) || 0])
+  );
+
+  return Object.entries(data).map(([name, quantity]) => {
+    const numericQuantity = Number(quantity) || 0;
+    const previousMax = previousMaxByName.get(String(name)) || 0;
+
+    return {
+      name,
+      quantity: numericQuantity,
+      max: Math.max(maxValues[name] ?? 0, previousMax, numericQuantity, 1),
+    };
+  });
 }
 
 
@@ -124,7 +133,7 @@ function App() {
       const data = await response.json();
 
       if (data?.inventory && typeof data.inventory === "object") {
-        setInventory(formatInventoryObject(data.inventory));
+        setInventory((prev) => formatInventoryObject(data.inventory, prev));
       }
 
       if (data?.analytics) {
