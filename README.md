@@ -2,7 +2,7 @@
 
 A full-stack restaurant system that connects live customer orders to real-time inventory tracking and predictive demand insights.
 
-Overview
+#Overview
 
 This project was built as a hackathon solution to simulate a modern restaurant ordering and inventory workflow. It integrates a customer-facing ordering interface with a backend system for real-time inventory tracking, along with a separate dashboard for monitoring stock levels, analytics, and predictive insights.
 
@@ -10,7 +10,7 @@ Traditional restaurant inventory systems are reactive, where staff only recogniz
 
 The application is designed to help restaurant operators make more informed operational decisions by identifying usage patterns, highlighting potential shortages, and providing insight into future demand.
 
-Features-
+##Features-
 
 -Frontend 1 — Customer Ordering UI
 Built with React, this interface allows users to browse menu items, customize ingredients at a granular level, and submit orders through an interactive, menu-based experience. Orders are sent directly to the backend for processing.
